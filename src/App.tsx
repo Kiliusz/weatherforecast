@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { LocalizationProvider } from '@mui/lab';
+import DateAdapter from '@mui/lab/AdapterDateFns';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import Layout from './components/Layout/Layout';
+import HomePage from './pages/HomePage';
+import DisclaimerPage from './pages/DisclaimerPage';
+import HistoryDayPage from './pages/HistoryDayPage';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <LocalizationProvider dateAdapter={DateAdapter}>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<HomePage />}></Route>
+              <Route path="/history" element={<HistoryDayPage />}></Route>
+              <Route path="/disclaimer" element={<DisclaimerPage />}></Route>
+            </Routes>
+          </Layout>
+        </LocalizationProvider>
+      </QueryClientProvider>
+    </BrowserRouter>
   );
 }
 
