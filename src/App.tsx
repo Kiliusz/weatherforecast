@@ -13,7 +13,7 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <QueryClientProvider client={queryClient}>
         <LocalizationProvider dateAdapter={DateAdapter}>
           <Layout>

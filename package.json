@@ -1,6 +1,6 @@
 {
   "name": "weatherforecast",
-  "homepage": "https://kiliusz.github.io/weatherforecast",
+  "homepage": "https://kiliusz.github.io/weatherforecast/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

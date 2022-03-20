@@ -22,7 +22,7 @@ const HomePage = () => {
 
   const [position, positionError] = useGeoLoc();
 
-  const { isLoading, isError, data, refetch } = useQuery(
+  const { isLoading, isError, data, refetch, remove } = useQuery(
     ['weather', cityQuery],
     () => getCurrentWeather(cityQuery),
     { retry: 1, enabled: !!position }
@@ -36,6 +36,7 @@ const HomePage = () => {
   } = useQuery('compareWeather', () => getCurrentWeather(compareCity), {
     enabled: false,
     retry: 1,
+    cacheTime: 0,
   });
 
   useEffect(() => {
@@ -46,6 +47,7 @@ const HomePage = () => {
 
   useEffect(() => {
     refetch();
+    return () => remove();
   }, [cityQuery]);
 
   const handleCompareCitySubmit = () => {
