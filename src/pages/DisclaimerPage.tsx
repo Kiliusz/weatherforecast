@@ -6,7 +6,7 @@ const DisclaimerPage = () => {
     <Container>
       <Box sx={{ p: 2, mt: 3 }} component={Paper}>
         <Typography mt={2} variant="body2">
-          Ther are some limitations in weather API
+          There are some limitations in weather API
         </Typography>
         <Typography component={'li'} mt={2} variant="body2">
           Free plan of weatherAPI allows only for 3 day forecast weather

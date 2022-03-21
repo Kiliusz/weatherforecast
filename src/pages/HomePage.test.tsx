@@ -58,7 +58,7 @@ const mockedData = {
 
 describe('integration test HomePage', () => {
   beforeEach(() => {
-    jest.spyOn(axios, 'get' as any).mockResolvedValue(mockedData);
+    jest.spyOn(axios, 'get').mockResolvedValue(mockedData);
   });
 
   afterEach(() => {

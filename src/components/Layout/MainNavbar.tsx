@@ -6,12 +6,14 @@ import {
   IconButton,
   Toolbar,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { PaletteMode } from '@mui/material';
 import NavMenu from '../NavMenu/NavMenu';
 import { NavLink } from 'react-router-dom';
+import MobileNavMenu from '../NavMenu/MobileNavMenu';
 
 interface MainNavbarProps {
   mode: string;
@@ -19,6 +21,8 @@ interface MainNavbarProps {
 }
 
 const MainNavbar = ({ mode, setMode }: MainNavbarProps) => {
+  const isMobile = useMediaQuery('(max-width:600px)');
+
   const ChangeDarkMode = () => {
     window.localStorage.setItem('darkMode', mode === 'dark' ? 'light' : 'dark');
     setMode(
@@ -61,7 +65,7 @@ const MainNavbar = ({ mode, setMode }: MainNavbarProps) => {
                 >
                   {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
                 </IconButton>
-                <NavMenu />
+                {isMobile ? <MobileNavMenu /> : <NavMenu />}
               </Box>
             </Box>
           </Container>
